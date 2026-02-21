@@ -3,36 +3,16 @@ Feature: sample karate test script
   for help, see: https://github.com/karatelabs/karate/wiki/IDE-Support
 
   Background:
-    * url 'https://petstore.swagger.io/v2/'
+    * url apiPetStore
+    * def jsonCrearMascota = read('classpath:examples/jsonData/crearMascota.json')
 
   @TEST-1
   Scenario: Verificar la creacion de una nueva mascota en Pet Store - Ok
-    * def petCreation =
-      """
-      {
-        "id": 0,
-        "category": {
-          "id": 0,
-          "name": "string"
-        },
-        "name": "doggie",
-        "photoUrls": [
-          "string"
-        ],
-        "tags": [
-          {
-            "id": 0,
-            "name": "string"
-          }
-        ],
-        "status": "available"
-      }
-      """
-
     Given path 'pet'
-    And request petCreation
+    And request jsonCrearMascota
     When method post
     Then status 200
+    And print response
 
     # When method get
     # Then status 200
@@ -41,7 +21,7 @@ Feature: sample karate test script
   Scenario: Subir imagen a Pet - Ok
     * def petId = 4
     Given path 'pet',petId,'uploadImage'
-    And multipart file file = { read: 'assssssssssss.jpg', filename: 'assssssssssss.jpg', contentType: 'image/jpeg' }
+    And multipart file file = { read: 'classpath:examples/imagenes/assssssssssss.jpg', filename: 'assssssssssss.jpg', contentType: 'image/jpeg' }
     And multipart field additionalMetadata = 'Foto de prueba'
     When method post
     Then status 200
@@ -62,29 +42,10 @@ Feature: sample karate test script
 
   @TEST-4
     Scenario: Actualizar mascota
-    * def updatePet =
-    """
-    {
-      "id": 0,
-      "category": {
-        "id": 0,
-        "name": "string"
-      },
-      "name": "doggie",
-      "photoUrls": [
-        "string"
-      ],
-      "tags": [
-        {
-          "id": 0,
-          "name": "string"
-        }
-      ],
-      "status": "available"
-    }
-    """
     Given path 'pet'
-    And request updatePet
+    And request jsonCrearMascota.id='3'
+    And request jsonCrearMascota.name='kills'
+    And request jsonCrearMascota
     When method put
     Then status 200
     And print response

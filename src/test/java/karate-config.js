@@ -7,13 +7,15 @@ function fn() {
   var config = {
     env: env,
     myVarName: 'someValue'
+
   }
   if (env == 'dev') {
     // customize
     // e.g. config.foo = 'bar';
-    //ambiente = "apidev.escuela.com.ar"
+    apiPetStore = 'https://petstore.swagger.io/v2/'
   } else if (env == 'e2e') {
     // customize
+
   }
   return config;
 }
