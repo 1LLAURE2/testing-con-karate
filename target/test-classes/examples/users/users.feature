@@ -5,6 +5,7 @@ Feature: sample karate test script
   Background:
     * url apiPetStore
     * def jsonCrearMascota = read('classpath:examples/jsonData/crearMascota.json')
+    * def jsonUpdateMascota = read('classpath:examples/jsonData/updateMascota.json')
 
   @TEST-1
   Scenario: Verificar la creacion de una nueva mascota en Pet Store - Ok
@@ -43,9 +44,9 @@ Feature: sample karate test script
   @TEST-4
     Scenario: Actualizar mascota
     Given path 'pet'
-    And request jsonCrearMascota.id='3'
-    And request jsonCrearMascota.name='kills'
-    And request jsonCrearMascota
+    And request jsonUpdateMascota.id='3'
+    And request jsonUpdateMascota.name='kills'
+    And request jsonUpdateMascota
     When method put
     Then status 200
     And print response

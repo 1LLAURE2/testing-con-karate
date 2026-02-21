@@ -1,7 +1,7 @@
-16:00:33.013 [main] INFO  com.intuit.karate.Runner - using system property 'karate.options': --tags @TEST-4
-16:00:33.162 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
-16:00:33.967 [main] INFO  com.intuit.karate - karate.env system property was: null 
-16:00:34.241 [main] DEBUG com.intuit.karate - request:
+16:10:10.049 [main] INFO  com.intuit.karate.Runner - using system property 'karate.options': --tags @TEST-4
+16:10:10.196 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+16:10:10.924 [main] INFO  com.intuit.karate - karate.env system property was: null 
+16:10:11.187 [main] DEBUG com.intuit.karate - request:
 1 > PUT https://petstore.swagger.io/v2/pet
 1 > Content-Type: application/json; charset=UTF-8
 1 > Content-Length: 139
@@ -11,9 +11,9 @@
 1 > Accept-Encoding: gzip,deflate
 {"id":"3","category":{"id":0,"name":"string"},"name":"kills","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"available"}
 
-16:00:34.752 [main] DEBUG com.intuit.karate - response time in milliseconds: 507
+16:10:11.776 [main] DEBUG com.intuit.karate - response time in milliseconds: 587
 1 < 200
-1 < Date: Sat, 21 Feb 2026 21:00:34 GMT
+1 < Date: Sat, 21 Feb 2026 21:10:11 GMT
 1 < Content-Type: application/json
 1 < Transfer-Encoding: chunked
 1 < Connection: keep-alive
@@ -23,7 +23,7 @@
 1 < Server: Jetty(9.2.9.v20150224)
 {"id":3,"category":{"id":0,"name":"string"},"name":"kills","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"available"}
 
-16:00:34.755 [main] INFO  com.intuit.karate - [print] {
+16:10:11.780 [main] INFO  com.intuit.karate - [print] {
   "id": 3,
   "category": {
     "id": 0,
