@@ -49,10 +49,10 @@ Feature: sample karate test script
     And request jsonUpdateMascota
     When method put
     Then status 200
+    And match response.id == 3
+    And match response.name == 'kills'
+    And match response.status == 'available'
     And print response
-    # And match response.id == 9223372036854775807
-    # And match response.name == 'doggie'
-    # And match response.status == 'available'
 
   @TEST-05
     Scenario: Buscar mascota por Id
@@ -79,3 +79,26 @@ Feature: sample karate test script
     |1    |
     |2    |
     |3    |
+
+
+  @TEST-7 @happyPath @crearMascota
+  Scenario: NEW PET - Pet Store - Ok
+    Given path 'pet'
+    And request jsonCrearMascota.id=14
+    And request jsonCrearMascota
+    When method post
+    Then status 200
+    And match response.id == 14
+    And match response.name == 'doggie'
+    And match response.status == 'available'
+    * def idPet = response.id
+    And print idPet
+
+    #llamar a otro caso de prueba
+  @TEST-8 @happyPath
+  Scenario: Verificar busqyueda por ID reutilizando - Ok
+    * def idMascota = call read('classpath:examples/users/users.feature@crearMascota')
+    Given path 'pet/' + idMascota.idPet
+    When method get
+    Then status 200
+    And print response
